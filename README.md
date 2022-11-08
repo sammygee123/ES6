@@ -356,3 +356,111 @@ function makeList(arr) {
 
 const failuresList = makeList(result.failure);
 ```
+# Write Concise Object Literal Declarations Using Object Property Shorthand
+ES6 adds some nice support for easily defining object literals.
+
+Consider the following code:
+
+const getMousePosition = (x, y) => ({
+  x: x,
+  y: y
+});
+getMousePosition is a simple function that returns an object containing two properties. ES6 provides the syntactic sugar to eliminate the redundancy of having to write x: x. You can simply write x once, and it will be converted tox: x (or something equivalent) under the hood. Here is the same function from above rewritten to use this new syntax:
+
+const getMousePosition = (x, y) => ({ x, y });
+Use object property shorthand with object literals to create and return an object with name, age and gender properties.
+```
+const createPerson = (name, age, gender) => {
+  // Only change code below this line
+  return {
+    name,
+    age,
+    gender
+  };
+  // Only change code above this line
+};
+```
+# Write Concise Declarative Functions with ES6
+When defining functions within objects in ES5, we have to use the keyword function as follows:
+
+const person = {
+  name: "Taylor",
+  sayHello: function() {
+    return `Hello! My name is ${this.name}.`;
+  }
+};
+With ES6, you can remove the function keyword and colon altogether when defining functions in objects. Here's an example of this syntax:
+
+const person = {
+  name: "Taylor",
+  sayHello() {
+    return `Hello! My name is ${this.name}.`;
+  }
+};
+Refactor the function setGear inside the object bicycle to use the shorthand syntax described above.
+```
+// Only change code below this line
+const bicycle = {
+  gear: 2,
+  setGear (newGear) {
+    this.gear = newGear;
+  }
+};
+// Only change code above this line
+bicycle.setGear(3);
+console.log(bicycle.gear);
+```
+# Use class Syntax to Define a Constructor Function
+ES6 provides a new syntax to create objects, using the class keyword.
+
+It should be noted that the class syntax is just syntax, and not a full-fledged class-based implementation of an object-oriented paradigm, unlike in languages such as Java, Python, Ruby, etc.
+
+In ES5, an object can be created by defining a constructor function and using the new keyword to instantiate the object.
+
+In ES6, a class declaration has a constructor method that is invoked with the new keyword. If the constructor method is not explicitly defined, then it is implicitly defined with no arguments.
+
+// Explicit constructor
+class SpaceShuttle {
+  constructor(targetPlanet) {
+    this.targetPlanet = targetPlanet;
+  }
+  takeOff() {
+    console.log("To " + this.targetPlanet + "!");
+  }
+}
+
+// Implicit constructor 
+class Rocket {
+  launch() {
+    console.log("To the moon!");
+  }
+}
+
+const zeus = new SpaceShuttle('Jupiter');
+// prints To Jupiter! in console
+zeus.takeOff();
+
+const atlas = new Rocket();
+// prints To the moon! in console
+atlas.launch();
+It should be noted that the class keyword declares a new function, to which a constructor is added. This constructor is invoked when new is called to create a new object.
+
+Note: UpperCamelCase should be used by convention for ES6 class names, as in SpaceShuttle used above.
+
+The constructor method is a special method for creating and initializing an object created with a class. You will learn more about it in the Object Oriented Programming section of the JavaScript Algorithms And Data Structures Certification.
+
+Use the class keyword and write a constructor to create the Vegetable class.
+
+The Vegetable class allows you to create a vegetable object with a property name that gets passed to the constructor.
+```
+// Only change code below this line
+class Vegetable{
+  constructor(name){
+    this.name = name;
+  }
+}
+// Only change code above this line
+
+const carrot = new Vegetable('carrot');
+console.log(carrot.name); // Should display 'carrot'
+```
