@@ -251,3 +251,108 @@ let a = 8, b = 6;
 // Only change code below this line
 [a,b] = [b,a]
 ```
+# Use Destructuring Assignment with the Rest Parameter to Reassign Array Elements
+In some situations involving array destructuring, we might want to collect the rest of the elements into a separate array.
+
+The result is similar to Array.prototype.slice(), as shown below:
+
+const [a, b, ...arr] = [1, 2, 3, 4, 5, 7];
+console.log(a, b);
+console.log(arr);
+The console would display the values 1, 2 and [3, 4, 5, 7].
+
+Variables a and b take the first and second values from the array. After that, because of the rest parameter's presence, arr gets the rest of the values in the form of an array. The rest element only works correctly as the last variable in the list. As in, you cannot use the rest parameter to catch a subarray that leaves out the last element of the original array.
+
+Use destructuring assignment with the rest parameter to perform an effective Array.prototype.slice() so that arr is a sub-array of the original array source with the first two elements omitted.
+```
+const source = [1,2,3,4,5,6,7,8,9,10];
+function removeFirstTwo(list) {
+  // Only change code below this line
+  const [a,b, ...arr] = list; // Change this line
+  // Only change code above this line
+  return arr;
+}
+const arr = removeFirstTwo(source);
+```
+
+# Use Destructuring Assignment to Pass an Object as a Function's Parameters
+In some cases, you can destructure the object in a function argument itself.
+
+Consider the code below:
+
+const profileUpdate = (profileData) => {
+  const { name, age, nationality, location } = profileData;
+
+}
+This effectively destructures the object sent into the function. This can also be done in-place:
+
+const profileUpdate = ({ name, age, nationality, location }) => {
+
+}
+When profileData is passed to the above function, the values are destructured from the function parameter for use within the function.
+
+Use destructuring assignment within the argument to the function half to send only max and min inside the function.
+```
+const stats = {
+  max: 56.78,
+  standard_deviation: 4.34,
+  median: 34.54,
+  mode: 23.87,
+  min: -0.75,
+  average: 35.85
+};
+
+// Only change code below this line
+const half = ({max,min}) => (max + min) / 2.0; 
+// Only change code above this line
+```
+# Create Strings using Template Literals
+A new feature of ES6 is the template literal. This is a special type of string that makes creating complex strings easier.
+
+Template literals allow you to create multi-line strings and to use string interpolation features to create strings.
+
+Consider the code below:
+
+const person = {
+  name: "Zodiac Hasbro",
+  age: 56
+};
+
+const greeting = `Hello, my name is ${person.name}!
+I am ${person.age} years old.`;
+
+console.log(greeting);
+The console will display the strings Hello, my name is Zodiac Hasbro! and I am 56 years old..
+
+A lot of things happened there. Firstly, the example uses backticks (`), not quotes (' or "), to wrap the string. Secondly, notice that the string is multi-line, both in the code and the output. This saves inserting \n within strings. The ${variable} syntax used above is a placeholder. Basically, you won't have to use concatenation with the + operator anymore. To add variables to strings, you just drop the variable in a template string and wrap it with ${ and }. Similarly, you can include other expressions in your string literal, for example ${a + b}. This new way of creating strings gives you more flexibility to create robust strings.
+
+Use template literal syntax with backticks to create an array of list element (li) strings. Each list element's text should be one of the array elements from the failure property on the result object and have a class attribute with the value text-warning. The makeList function should return the array of list item strings.
+
+Use an iterator method (any kind of loop) to get the desired output (shown below).
+
+[
+  '<li class="text-warning">no-var</li>',
+  '<li class="text-warning">var-on-top</li>',
+  '<li class="text-warning">linebreak</li>'
+]
+
+```
+const result = {
+  success: ["max-length", "no-amd", "prefer-arrow-functions"],
+  failure: ["no-var", "var-on-top", "linebreak"],
+  skipped: ["no-extra-semi", "no-dup-keys"]
+};
+function makeList(arr) {
+  // Only change code below this line
+  const failureItems = [];
+  for (let i = 0; i < arr.length; i++) {
+    failureItems.push(`<li class="text-warning">${arr[i]}</li>`);
+  console.log (failureItems)
+  }
+  // Only change code above this line
+
+  return failureItems;
+}
+
+const failuresList = makeList(result.failure);
+```
